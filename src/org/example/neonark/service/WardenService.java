@@ -7,18 +7,27 @@ import org.example.neonark.util.Validator;
 
 import java.util.List;
 
+/*
+ This class handles all the main logic for wardens.
+ It connects input, validation, and data together.
+*/
 public class WardenService {
 
     private CsvWardenRepository repository = new CsvWardenRepository();
     private InputHandler input = new InputHandler();
     private Validator validator = new Validator();
 
+    /*
+     Handles adding a new warden.
+     Collects input, validates it, and prints a simulated API request.
+    */
     public void addNewWarden() {
         System.out.println("\n=== ADD NEW WARDEN ===");
 
         String firstName = input.getRequiredInput("First name: ");
         String lastName = input.getRequiredInput("Last name: ");
 
+        // email validation loop
         String email;
         while (true) {
             email = input.getRequiredInput("Email: ");
@@ -32,6 +41,7 @@ public class WardenService {
             }
         }
 
+        // identifier type validation
         String identifierType;
         while (true) {
             identifierType = input.getRequiredInput("Identifier type (Badge, Passport, Visa): ");
@@ -40,9 +50,10 @@ public class WardenService {
                 break;
             }
 
-            System.out.println("Invalid identifier type. Use Badge, Passport, or Visa.");
+            System.out.println("Invalid identifier type.");
         }
 
+        // identifier value check
         String identifierValue;
         while (true) {
             identifierValue = input.getRequiredInput("Identifier value: ");
@@ -54,6 +65,7 @@ public class WardenService {
             }
         }
 
+        // role validation
         String role;
         while (true) {
             role = input.getRequiredInput("Role (Admin, Field, Rift, Trainer, Astral): ");
@@ -62,9 +74,10 @@ public class WardenService {
                 break;
             }
 
-            System.out.println("Invalid role. Use Admin, Field, Rift, Trainer, or Astral.");
+            System.out.println("Invalid role.");
         }
 
+        // status validation
         String status;
         while (true) {
             status = input.getRequiredInput("Status (Active, OnLeave, Terminated): ");
@@ -73,9 +86,10 @@ public class WardenService {
                 break;
             }
 
-            System.out.println("Invalid status. Use Active, OnLeave, or Terminated.");
+            System.out.println("Invalid status.");
         }
 
+        // clearance validation
         String clearance;
         while (true) {
             clearance = input.getRequiredInput("Clearance (Alpha, Omega, Eclipse): ");
@@ -84,9 +98,10 @@ public class WardenService {
                 break;
             }
 
-            System.out.println("Invalid clearance. Use Alpha, Omega, or Eclipse.");
+            System.out.println("Invalid clearance.");
         }
 
+        // date validation
         String startDate;
         while (true) {
             startDate = input.getRequiredInput("Start date (YYYY-MM-DD): ");
@@ -95,9 +110,10 @@ public class WardenService {
                 break;
             }
 
-            System.out.println("Invalid date. Use YYYY-MM-DD.");
+            System.out.println("Invalid date format.");
         }
 
+        // simulated API output
         System.out.println("\nHTTP METHOD: POST");
         System.out.println("ENDPOINT: /api/wardens");
         System.out.println("DESCRIPTION: Create new warden");
@@ -119,6 +135,9 @@ public class WardenService {
         System.out.println("NOTE: CSV file was not changed.");
     }
 
+    /*
+     Loads and displays all wardens from CSV.
+    */
     public void viewAllWardens() {
         List<Warden> wardens = repository.getAllWardens();
 
@@ -146,6 +165,9 @@ public class WardenService {
         }
     }
 
+    /*
+     Simulates updating a warden.
+    */
     public void updateWardenSimulated() {
         System.out.println("\n=== UPDATE WARDEN (SIMULATED) ===");
         System.out.println("HTTP METHOD: PUT");
@@ -155,24 +177,31 @@ public class WardenService {
         System.out.println("NOTE: No data was changed.");
     }
 
+    /*
+     Simulates managing certifications.
+    */
     public void manageCertificationsSimulated() {
         System.out.println("\n=== MANAGE CERTIFICATIONS (SIMULATED) ===");
         System.out.println("HTTP METHOD: POST");
         System.out.println("ENDPOINT: /api/wardens/{wardenId}/certifications");
-        System.out.println("DESCRIPTION: Add or update warden certification information");
+        System.out.println("DESCRIPTION: Add or update certifications");
         System.out.println("RESULT: SUCCESS (simulated)");
         System.out.println("NOTE: No data was changed.");
     }
 
+    /*
+     Simulates deactivating a warden.
+    */
     public void deactivateWardenSimulated() {
         System.out.println("\n=== DEACTIVATE / TERMINATE WARDEN (SIMULATED) ===");
         System.out.println("HTTP METHOD: PATCH");
         System.out.println("ENDPOINT: /api/wardens/{wardenId}/status");
-        System.out.println("DESCRIPTION: Change warden employment status");
+        System.out.println("DESCRIPTION: Change warden status");
         System.out.println("RESULT: SUCCESS (simulated)");
         System.out.println("NOTE: No data was changed.");
     }
 
+    // checks if email already exists
     private boolean emailAlreadyExists(String email) {
         List<Warden> wardens = repository.getAllWardens();
 
@@ -185,6 +214,7 @@ public class WardenService {
         return false;
     }
 
+    // checks if identifier is already used
     private boolean identifierAlreadyExists(String type, String value) {
         List<Warden> wardens = repository.getAllWardens();
 
