@@ -1,0 +1,11 @@
+warden_id,first_name,last_name,email,identifier_type,identifier_value,role,employment_status,clearance_level,start_date,end_date
+1,Lena,Korr,lena.korr@neonark.test,Badge,B1001,Field,Active,Alpha,2023-01-10,
+2,Darius,Vale,darius.vale@neonark.test,Badge,B1002,Rift,Active,Omega,2023-02-05,
+3,Mira,Sol,mira.sol@neonark.test,Passport,P8891,Trainer,Active,Alpha,2023-03-12,
+4,Kai,Renn,kai.renn@neonark.test,Visa,V4432,Astral,Active,Eclipse,2023-04-18,
+5,Arin,Tao,arin.tao@neonark.test,Badge,B1003,Field,OnLeave,Omega,2023-05-22,
+6,Sera,Nyx,sera.nyx@neonark.test,Passport,P9981,Rift,Active,Alpha,2023-06-14,
+7,Jon,Cade,jon.cade@neonark.test,Badge,B1004,Trainer,Active,Omega,2023-07-03,
+8,Lyra,Zen,lyra.zen@neonark.test,Visa,V5501,Astral,Active,Eclipse,2023-08-11,
+9,Theo,Mar,theo.mar@neonark.test,Badge,B1005,Field,Terminated,Alpha,2023-09-07,2024-01-01
+10,Rhea,Volt,rhea.volt@neonark.test,Passport,P7700,Rift,Active,Omega,2023-10-09,
