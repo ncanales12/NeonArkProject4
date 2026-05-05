@@ -24,13 +24,13 @@ public class MainMenu {
                     wardenService.viewAllWardens();
                     break;
                 case 3:
-                    System.out.println("Update Warden (simulated)");
+                    wardenService.updateWardenSimulated();
                     break;
                 case 4:
-                    System.out.println("Manage Certifications (simulated)");
+                    wardenService.manageCertificationsSimulated();
                     break;
                 case 5:
-                    System.out.println("Deactivate Warden (simulated)");
+                    wardenService.deactivateWardenSimulated();
                     break;
                 case 6:
                     System.out.println("Exiting...");
@@ -60,7 +60,7 @@ public class MainMenu {
         }
 
         int choice = scanner.nextInt();
-        scanner.nextLine(); // clears leftover Enter key
+        scanner.nextLine();
         return choice;
     }
 }
