@@ -4,11 +4,19 @@ import org.example.neonark.service.WardenService;
 
 import java.util.Scanner;
 
+/*
+ This class controls the main menu of the program.
+ It shows options to the user and routes them to the correct feature.
+*/
 public class MainMenu {
 
     private Scanner scanner = new Scanner(System.in);
     private WardenService wardenService = new WardenService();
 
+    /*
+     Starts the menu loop.
+     Keeps running until the user chooses to exit.
+    */
     public void start() {
         boolean running = true;
 
@@ -42,6 +50,9 @@ public class MainMenu {
         }
     }
 
+    /*
+     Prints the menu options to the screen.
+    */
     private void printMenu() {
         System.out.println("\n=== NEON ARK WARDEN CONSOLE ===");
         System.out.println("1. Add New Warden");
@@ -53,6 +64,9 @@ public class MainMenu {
         System.out.print("Enter choice: ");
     }
 
+    /*
+     Gets user input and makes sure it is a number.
+    */
     private int getUserChoice() {
         while (!scanner.hasNextInt()) {
             System.out.println("Please enter a valid number.");
@@ -60,7 +74,7 @@ public class MainMenu {
         }
 
         int choice = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // clears leftover input
         return choice;
     }
 }
