@@ -7,9 +7,15 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ This class reads warden data from the CSV file.
+ The CSV is only used as a read-only data source.
+*/
 public class CsvWardenRepository {
 
-    // Reads all wardens from CSV file
+    /*
+     Reads all wardens from wardens.csv and returns them as a list.
+    */
     public List<Warden> getAllWardens() {
         List<Warden> wardens = new ArrayList<>();
 
@@ -21,16 +27,15 @@ public class CsvWardenRepository {
 
             while ((line = reader.readLine()) != null) {
 
-                // skip header row
+                // skip the header row
                 if (isFirstLine) {
                     isFirstLine = false;
                     continue;
                 }
 
-                // split CSV safely (keeps empty values)
+                // split the CSV row and keep empty values
                 String[] parts = line.split(",", -1);
 
-                // basic safety check
                 if (parts.length < 10) {
                     System.out.println("Skipping invalid row in CSV.");
                     continue;
