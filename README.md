@@ -37,6 +37,11 @@ It also prints a JSON-style payload with the entered data.
 - Duplicate emails and identifiers are not allowed
 - This project does not use a database
 
+## How to run
+
+Open the project in IntelliJ and run `Main.java`.
+Use the menu to navigate features.
+
 ## Author
 
 Nicolas Canales
