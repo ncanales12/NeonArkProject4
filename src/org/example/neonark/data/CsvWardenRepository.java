@@ -9,6 +9,7 @@ import java.util.List;
 
 public class CsvWardenRepository {
 
+    // Reads all wardens from CSV file
     public List<Warden> getAllWardens() {
         List<Warden> wardens = new ArrayList<>();
 
@@ -19,12 +20,21 @@ public class CsvWardenRepository {
             boolean isFirstLine = true;
 
             while ((line = reader.readLine()) != null) {
+
+                // skip header row
                 if (isFirstLine) {
                     isFirstLine = false;
                     continue;
                 }
 
+                // split CSV safely (keeps empty values)
                 String[] parts = line.split(",", -1);
+
+                // basic safety check
+                if (parts.length < 10) {
+                    System.out.println("Skipping invalid row in CSV.");
+                    continue;
+                }
 
                 Warden warden = new Warden(
                         Integer.parseInt(parts[0]),
@@ -37,7 +47,7 @@ public class CsvWardenRepository {
                         parts[7],
                         parts[8],
                         parts[9],
-                        parts[10]
+                        parts.length > 10 ? parts[10] : ""
                 );
 
                 wardens.add(warden);
@@ -46,7 +56,7 @@ public class CsvWardenRepository {
             reader.close();
 
         } catch (Exception e) {
-            System.out.println("Error reading CSV file. Make sure wardens.csv is in src/resources.");
+            System.out.println("Could not load wardens.csv. Make sure it exists in src/resources.");
         }
 
         return wardens;
